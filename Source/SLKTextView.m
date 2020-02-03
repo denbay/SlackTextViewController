@@ -889,7 +889,7 @@ SLKPastableMediaType SLKPastableMediaTypeFromNSString(NSString *string)
     
     NSString *contentSizeCategory = notification.userInfo[UIContentSizeCategoryNewValueKey];
     
-    [self setFontName:self.font.fontName pointSize:self.initialFontSize withContentSizeCategory:contentSizeCategory];
+    [self setFont:self.font];
     
     NSString *text = [self.text copy];
     
