@@ -504,25 +504,10 @@ SLKPastableMediaType SLKPastableMediaTypeFromNSString(NSString *string)
 
 - (void)setFont:(UIFont *)font
 {
-    NSString *contentSizeCategory = [[UIApplication sharedApplication] preferredContentSizeCategory];
-    
-    [self setFontName:font.fontName pointSize:font.pointSize withContentSizeCategory:contentSizeCategory];
-    
-    self.initialFontSize = font.pointSize;
-}
-
-- (void)setFontName:(NSString *)fontName pointSize:(CGFloat)pointSize withContentSizeCategory:(NSString *)contentSizeCategory
-{
-    if (self.isDynamicTypeEnabled) {
-        pointSize += SLKPointSizeDifferenceForCategory(contentSizeCategory);
-    }
-    
-    UIFont *dynamicFont = [UIFont fontWithName:fontName size:pointSize];
-    
-    [super setFont:dynamicFont];
-    
-    // Updates the placeholder font too
-    self.placeholderLabel.font = dynamicFont;
+    UIFont *neededFont = [UIFont systemFontOfSize:14];
+    [super setFont:neededFont];
+    self.placeholderLabel.font = neededFont;
+    self.initialFontSize = 14;
 }
 
 - (void)setDynamicTypeEnabled:(BOOL)dynamicTypeEnabled
@@ -533,9 +518,7 @@ SLKPastableMediaType SLKPastableMediaTypeFromNSString(NSString *string)
     
     _dynamicTypeEnabled = dynamicTypeEnabled;
     
-    NSString *contentSizeCategory = [[UIApplication sharedApplication] preferredContentSizeCategory];
-
-    [self setFontName:self.font.fontName pointSize:self.initialFontSize withContentSizeCategory:contentSizeCategory];
+    [self setFont:self.font];
 }
 
 - (void)setTextAlignment:(NSTextAlignment)textAlignment
