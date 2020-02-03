@@ -141,7 +141,7 @@ NSString * const SLKTextInputbarDidMoveNotification =   @"SLKTextInputbarDidMove
         
         _textView = [[class alloc] init];
         _textView.translatesAutoresizingMaskIntoConstraints = NO;
-        _textView.font = [UIFont systemFontOfSize:15.0];
+        _textView.font = [UIFont systemFontOfSize:14.0];
         _textView.maxNumberOfLines = [self slk_defaultNumberOfLines];
         
         _textView.keyboardType = UIKeyboardTypeTwitter;
